@@ -16,7 +16,6 @@
         <module>demonDao</module>
         <module>demonModel</module>
         <module>demonCommon</module>
-        <module>demonMapper</module>
     </modules>
 
 
