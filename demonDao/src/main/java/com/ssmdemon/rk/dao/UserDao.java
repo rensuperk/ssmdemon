@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface UserDao{
     List<User> list(User user, RowBounds rowBounds);
-    void delete(Long id);
+    void deleteByPk(Long id);
     void update(User user);
     void save(User user);
-    User getUser(Long id);
+    User findByPk(Long id);
 
 }

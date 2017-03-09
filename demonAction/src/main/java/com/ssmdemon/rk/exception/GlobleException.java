@@ -3,6 +3,9 @@ package com.ssmdemon.rk.exception;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.ssmdemon.rk.common.RespDto;
+import com.ssmdemon.rk.common.RespException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
@@ -20,17 +23,19 @@ import java.util.Locale;
  */
 @Component
 public class GlobleException extends SimpleMappingExceptionResolver {
-
+   private static Logger logger = LoggerFactory.getLogger(GlobleException.class);
     @Autowired
     private MessageSource messageSource;
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response,
                                               Object handler, Exception exception) {
         exception.printStackTrace();
+        logger.error(exception.getMessage());
         /*ModelAndView error = new ModelAndView("error");
 		error.addObject("exMsg", ex.getMessage());
 		error.addObject("exType", ex.getClass().getSimpleName().replace("\"", "'"));*/
         RespDto respDto = null;
+
         response.setStatus(HttpServletResponse.SC_OK);
         if (exception instanceof RespException) {
             String message = messageSource.getMessage(exception.getMessage(), null, exception.getMessage(), Locale.CHINESE);
@@ -52,7 +57,7 @@ public class GlobleException extends SimpleMappingExceptionResolver {
             out.write(content);
             out.flush();
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            this.logger.error(e.getMessage(), e);
             e.printStackTrace();
         } finally {
             if (out != null) {

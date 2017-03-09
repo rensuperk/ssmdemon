@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmdemon.rk.dao.BookDao">
+
+
+    <sql id="columns">
+        ID,NAME,PRICE,BORROW_FLAG
+    </sql>
+    <select id="list" resultType="Book">
+        SELECT
+        <include refid="columns"/>
+        FROM book
+        <include refid="listwhere"/>
+    </select>
+    <sql id="listwhere">
+        <where>
+            <if test="name != null and name != ''">
+                AND NAME=#{name}
+            </if>
+             <if test="id != null">
+                AND ID=#{id}
+            </if>
+            <if test="price != null">
+                AND PRICE=#{PRICE}
+            </if>
+           <if test="borrowFlag != null">
+                AND BORROW_FLAG=#{borrowFlag}
+            </if>
+        </where>
+    </sql>
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+              book
+              (
+                NAME,PRICE,BORROW_FLAG)
+            VALUES
+              (#{name}
+                , #{price}
+                , #{borrowFlag}
+                );
+    </insert>
+    <update id="update">
+        UPDATE book
+        <set>
+            <if test="name != null and name != ''">
+                 NAME=#{name},
+            </if>
+            <if test="price != null">
+                PRICE=#{price},
+            </if>
+            <if test="borrowFlag != null">
+                BORROW_FLAG=#{borrowFlag}
+            </if>
+        </set>
+    </update>
+    <select id="findByPk" resultType="Book">
+        select
+        <include refid="columns"/>
+         FROM book WHERE id=#{id}
+    </select>
+    <delete id="deleteByPk">
+        DELETE FROM book WHERE id=#{id}
+    </delete>
+    <select id="count" resultType="long">
+        SELECT count(1) FROM book
+        <include refid="listwhere"></include>
+    </select>
+</mapper>

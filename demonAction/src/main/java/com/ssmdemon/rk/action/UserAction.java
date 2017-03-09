@@ -1,14 +1,18 @@
 package com.ssmdemon.rk.action;
 
 
-import com.ssmdemon.rk.exception.RespException;
+import com.ssmdemon.rk.common.RespDto;
 import com.ssmdemon.rk.model.User;
 import com.ssmdemon.rk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -19,15 +23,38 @@ public class UserAction{
     private UserService userService;
 
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "list")
     public @ResponseBody
-    List<User> hello(){
-        User user = null;
-        if(user ==null){
-            throw new RespException("你说啥");
-        }
-        List<User> list = userService.list(new User(), 0, 10);
-        return list;
+    RespDto list(User user, @RequestParam(defaultValue = "0") Integer start, @RequestParam(defaultValue = "10") Integer limit){
+        List<User> list = userService.list(user, 0, 10);
+
+        return new RespDto().put("rows",list);
+    }
+@RequestMapping(value = "{id}")
+    public @ResponseBody
+    RespDto get(@PathVariable(value = "id") Long id){
+        User user = userService.getUser(id);
+
+    return new RespDto().put("obj",user);
+    }
+@RequestMapping(value = "delete/{id}")
+    public @ResponseBody
+    RespDto delete(@PathVariable(value = "id") Long id){
+        userService.delete(id);
+
+        return new RespDto();
+    }
+@RequestMapping(value = "update")
+    public @ResponseBody
+    RespDto update( User user){
+    userService.update(user);
+        return new RespDto();
+    }
+@RequestMapping(value = "save")
+    public @ResponseBody
+    RespDto save(@Valid() User user){
+        userService.save(user);
+    return new RespDto();
     }
 
 }

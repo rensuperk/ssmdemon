@@ -1,4 +1,4 @@
-package com.ssmdemon.rk.exception;
+package com.ssmdemon.rk.common;
 
 /**
  * Created by renkai on 2017/3/7.

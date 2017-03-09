@@ -1,11 +1,13 @@
 package com.ssmdemon.rk.service.impl;
 
+import com.ssmdemon.rk.common.RespException;
 import com.ssmdemon.rk.dao.UserDao;
 import com.ssmdemon.rk.model.User;
 import com.ssmdemon.rk.service.UserService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,20 +25,21 @@ public class UserServiceImpl implements UserService{
 
         return userDao.list(user,new RowBounds(start,limit));
     }
-
+    @Transactional()
     public void delete(Long id) {
 
+        userDao.deleteByPk(id);
     }
 
     public void update(User user) {
-
+        userDao.update(user);
     }
 
     public void save(User user) {
-
+        userDao.save(user);
     }
 
     public User getUser(Long id) {
-        return null;
+        return userDao.findByPk(id);
     }
 }

@@ -32,6 +32,20 @@
         <property name="suffix" value=".jsp" />
     </bean>
     <bean class="com.ssmdemon.rk.exception.GlobleException"/>
-    <!-- 4.扫描web相关的bean -->
-    <context:component-scan base-package="com.ssmdemon.rk" />
+
+
+    <!--处理静态资源-->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="false" />
+        <property name="favorParameter" value="false" />
+        <property name="ignoreAcceptHeader" value="false" />
+        <property name="mediaTypes" >
+            <value>
+                atom=application/atom+xml
+                html=text/html
+                json=application/json
+                *=*/*
+            </value>
+        </property>
+    </bean>
 </beans>
