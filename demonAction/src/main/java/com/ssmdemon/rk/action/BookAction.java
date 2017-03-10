@@ -3,6 +3,7 @@ package com.ssmdemon.rk.action;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.ssmdemon.rk.common.RespDto;
 import com.ssmdemon.rk.model.Book;
+import com.ssmdemon.rk.model.BookRecoud;
 import com.ssmdemon.rk.service.BookRemoteService;
 import com.ssmdemon.rk.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,19 @@ public class BookAction {
         List<Book> list = bookRemoteService.listByUserId(id,offset,limit);
         Integer count = bookRemoteService.countByUserId(id);
         return new RespDto().put("rows",list).put("count",count);
+    }
+    @RequestMapping("borrow/{id}")
+    @ResponseBody
+    public RespDto borrowBook(Long id) {
+        BookRecoud bookRecoud = new BookRecoud();
+        bookRemoteService.borrowBook(bookRecoud);
+        return new RespDto();
+    }
+    @RequestMapping("back/{id}")
+    @ResponseBody
+    public RespDto backBook(Long id) {
+        BookRecoud bookRecoud = new BookRecoud();
+        bookRemoteService.backBook(bookRecoud);
+        return new RespDto();
     }
 }

@@ -2,6 +2,7 @@ package com.ssmdemon.rk.service.impl;
 
 import com.ssmdemon.rk.dao.BookDao;
 import com.ssmdemon.rk.model.Book;
+import com.ssmdemon.rk.model.BookRecoud;
 import com.ssmdemon.rk.service.BookRemoteService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,13 @@ public class BookRemoteServiceImpl implements BookRemoteService{
 
     public Integer countByUserId(Long id) {
         return bookDao.countByUserId(id);
+    }
+
+    public void borrowBook(BookRecoud bookRecoud) {
+        bookDao.borrowBook(bookRecoud);
+    }
+
+    public void backBook(BookRecoud bookRecoud) {
+        bookDao.backBook(bookRecoud);
     }
 }

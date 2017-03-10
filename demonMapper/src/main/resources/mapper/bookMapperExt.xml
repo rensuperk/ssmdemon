@@ -15,4 +15,30 @@
           LEFT JOIN book b ON b.ID=br.BOOK_ID
         WHERE br.USER_ID=#{id}
     </select>
+    <insert id="borrowBook" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO book_record
+      (USER_ID, BOOK_ID, BORROW_TIME, BACK_TIME)
+        VALUES
+      (#{userId},#{bookId},#{borrowTime},#{backTime})
+    </insert>
+    <update id="backBook">
+        UPDATE book_record
+      SET
+      <if test="userId != null">
+
+      USER_ID=#{userId},
+      </if>
+        <if test="bookId != null">
+
+            BOOK_ID=#{bookId},
+        </if>
+        <if test="borrowTime != null">
+
+            BORROW_TIME=#{borrowTime},
+        </if>
+        <if test="backTime != null">
+
+            BACK_TIME=#{backTime}
+        </if>
+    </update>
 </mapper>

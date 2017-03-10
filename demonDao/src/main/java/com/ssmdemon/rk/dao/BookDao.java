@@ -1,6 +1,7 @@
 package com.ssmdemon.rk.dao;
 
 import com.ssmdemon.rk.model.Book;
+import com.ssmdemon.rk.model.BookRecoud;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
@@ -19,4 +20,8 @@ public interface BookDao {
     Long count(Book book);
 
     Integer countByUserId(Long id);
+
+    void borrowBook(BookRecoud bookRecoud);
+
+    void backBook(BookRecoud bookRecoud);
 }
