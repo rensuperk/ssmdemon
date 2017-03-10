@@ -7,10 +7,9 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
     <!--加载配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
-    <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <bean id="dataSourceC3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!-- 配置连接池属性 -->
         <property name="driverClass" value="${jdbc_driver}" />
         <property name="jdbcUrl" value="${jdbc_url}" />
@@ -30,7 +29,7 @@
 
 
     <!-- 配置数据源 -->
-    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean name="dataSourceDruid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="url" value="${jdbc_url}" />
         <property name="username" value="${jdbc_username}" />
         <property name="password" value="${jdbc_password}" />
@@ -66,7 +65,18 @@
         <!-- <property name="filters" value="stat" /> -->
         <property name="filters" value="mergeStat" />
     </bean>
-
+    <!--切换多数据源-->
+    <bean id="dataSource" class="com.ssmdemon.rk.common.DynamicDataSource">
+        <!-- 通过key-value的形式来关联数据源 -->
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="dataSourceDruid" key="dataSourceDruid"></entry>
+                <entry value-ref="dataSourceC3p0" key="dataSourceC3p0"></entry>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="dataSourceDruid" >
+        </property>
+    </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybaties-config.xml"></property>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
