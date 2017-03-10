@@ -8,7 +8,7 @@
 ### 7. 使用了c3p0和druid数据库连接池
 ### 8. 能够切换数据库(没实现)
 ### 9. 使用redis缓存(没实现)
-### 10. 使用dubbo治理远程服务SOA+zk进行任务调度(没实现)
+### 10. 使用dubbo治理远程服务SOA+zk进行任务调度# 1. 提供者单独提供一个服务# 2. 基于xml的配置方式
 ### 11. 使用shiro进行安全访问(没实现)
 ### 12. 前端用jsp(先用这个吧,还没开始写)
 ### 13. 基于注解的事务
@@ -55,6 +55,14 @@ bin/zkCli.sh -server 192.168.56.101:2181
  
  在数据库中执行
  ```
+ 
+ 修改mysql的配置
+ 
+ 打开mysql配置文件vi /etc/mysql/mysql.conf.d/mysqld.cnf
+将bind-address = 127.0.0.1注销
+
+
+
  CREATE TABLE book
      (
          ID BIGINT(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
