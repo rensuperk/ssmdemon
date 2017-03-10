@@ -1,7 +1,9 @@
 package com.ssmdemon.rk.action;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.ssmdemon.rk.common.RespDto;
 import com.ssmdemon.rk.model.Book;
+import com.ssmdemon.rk.service.BookRemoteService;
 import com.ssmdemon.rk.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ import java.util.List;
 public class BookAction {
     @Autowired
     private BookService bookService;
+
+    @Reference
+    private BookRemoteService bookRemoteService;
 
     @ResponseBody
     @RequestMapping("save")
@@ -53,5 +58,12 @@ public class BookAction {
 
         bookService.delete(id);
         return new RespDto();
+    }
+    @RequestMapping("borrowedBy/{id}")
+    @ResponseBody
+    public RespDto listByUserId(@PathVariable("id") Long id, @RequestParam(defaultValue = "0") Integer offset,@RequestParam(defaultValue = "10") Integer limit) {
+        List<Book> list = bookRemoteService.listByUserId(id,offset,limit);
+        Integer count = bookRemoteService.countByUserId(id);
+        return new RespDto().put("rows",list).put("count",count);
     }
 }

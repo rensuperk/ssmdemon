@@ -17,4 +17,6 @@ public interface BookDao {
     List<Book> listByUserId(Long id,RowBounds rowBounds);
 
     Long count(Book book);
+
+    Integer countByUserId(Long id);
 }

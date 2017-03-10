@@ -1,4 +1,4 @@
-package com.ssmdemon.rk.exception;
+package com.ssmdemon.rk.common.exception;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

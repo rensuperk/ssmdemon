@@ -9,13 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demonDao</artifactId>
+    <artifactId>demonServicesRemote</artifactId>
     <dependencies>
         <dependency>
             <groupId>testdemon</groupId>
-            <artifactId>demonModel</artifactId>
+            <artifactId>demonInterfaceRemote</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
 
+        <dependency>
+            <groupId>testdemon</groupId>
+            <artifactId>demonDao</artifactId>
+        </dependency>
+        <!--我也不知道干啥的-->
     </dependencies>
 
 </project>

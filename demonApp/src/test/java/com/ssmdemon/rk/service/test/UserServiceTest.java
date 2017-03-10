@@ -35,9 +35,13 @@ public class UserServiceTest extends BaseTest{
 
     @Test
     public void testsave(){
-        User user = new User("c", new Date(), "aaa", 1);
-        userService.save(user);
-        System.out.println(JSON.toJSONString(user));
+
+        for (int i = 0; i < 100; i++) {
+            User user = new User(i+"号", new Date(), "aaa", 1);
+            userService.save(user);
+
+            System.out.println(JSON.toJSONString(user));
+        }
     }
 
     @Test

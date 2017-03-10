@@ -9,13 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demonDao</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>testdemon</groupId>
-            <artifactId>demonModel</artifactId>
-        </dependency>
+    <artifactId>demonMapper</artifactId>
 
-    </dependencies>
 
 </project>

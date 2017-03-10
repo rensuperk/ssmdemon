@@ -10,22 +10,13 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demonApp</artifactId>
-
-
+    <artifactId>demonRemoteApp</artifactId>
     <dependencies>
         <dependency>
             <groupId>testdemon</groupId>
-            <artifactId>demonAction</artifactId>
+            <artifactId>demonServicesRemote</artifactId>
         </dependency>
-
-
-
-
-
-
     </dependencies>
-
     <profiles>
         <!--参数-->
         <profile>

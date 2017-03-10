@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmdemon.rk.dao.BookDao">
+
+    <select id="listByUserId" resultType="Book">
+        SELECT b.*
+          FROM book_record br
+          LEFT JOIN book b ON b.ID=br.BOOK_ID
+        WHERE br.USER_ID=#{id}
+        ORDER BY br.BORROW_TIME DESC
+    </select>
+    <select id="countByUserId" resultType="int">
+        SELECT count(*)
+          FROM book_record br
+          LEFT JOIN book b ON b.ID=br.BOOK_ID
+        WHERE br.USER_ID=#{id}
+    </select>
+</mapper>

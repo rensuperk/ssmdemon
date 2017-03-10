@@ -15,8 +15,45 @@
 ### 14. 使用hibernate-validator进行参数验证
 ### 15. 根据环境切换配置文件
 
- #### 大概就这些,详情看代码
+#### 大概就这些,详情看代码
  
+ 
+ ## 安装ubuntu
+ ## 安装mysql
+ ## 安装zookeeper
+ 使用wget去官网下载压缩包
+ ```
+ cd /app/
+ tar -zxvf 下载的包
+ mv 解压的包名 zookeeper
+ cd zookeeper
+ cp conf/zoo_template.cfg conf/zoo.cfg
+ vi cong/cfg 
+
+配置像这样的 
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/app/zookeeper/data
+dataLogDir=/app/zookeeper/logs
+clientPort=2181
+server.1=192.168.56.101:2888:3888 #本地域名:与leader交换信息的端口:重新选举的端口
+
+
+#配置环境变量
+vi /etc/profile
+
+export ZOOKEEPER_INSTALL=/app/zookeeper
+export PATH=$PATH:$ZOOKEEPER_INSTALL/bin
+
+#启动
+bin/zkServer.sh start
+#查看服务
+bin/zkCli.sh -server 192.168.56.101:2181
+ ```
+ 
+ 
+ 在数据库中执行
  ```
  CREATE TABLE book
      (
