@@ -89,6 +89,12 @@
             <artifactId>aspectjweaver</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
 
         <!-- 4)Spring test -->
         <dependency>

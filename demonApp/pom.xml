@@ -18,6 +18,10 @@
             <groupId>testdemon</groupId>
             <artifactId>demonAction</artifactId>
         </dependency>
+        <dependency>
+            <groupId>testdemon</groupId>
+            <artifactId>demonServicesRemote</artifactId>
+        </dependency>
 
 
 
