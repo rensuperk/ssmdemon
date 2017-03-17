@@ -68,7 +68,6 @@ public class DaoConfig {
         properties.put("useGeneratedKeys",true);
         properties.put("useColumnLabel",true);
         properties.put("mapUnderscoreToCamelCase",true);
-
         sqlSessionFactoryBean.setConfigurationProperties(properties);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
