@@ -1,8 +1,10 @@
 package com.ssmdemon.rk.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.ssmdemon.rk.dao.BookDao;
 import com.ssmdemon.rk.model.Book;
+import com.ssmdemon.rk.service.BookRemoteService;
 import com.ssmdemon.rk.service.BookService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService{
 
+    @Reference(check = true)
+    private BookRemoteService bookRemoteService;
     @Autowired
     private BookDao bookDao;
     @Autowired(required = false)
@@ -51,4 +55,12 @@ public class BookServiceImpl implements BookService{
     public void delete(Long id) {
         bookDao.deleteByPk(id);
     }
+
+//    public Page<Book> getList(Long id, Integer offset, Integer limit) {
+//        List<Book> books = bookRemoteService.listByUserId(id, offset, limit);
+//        Integer integer = bookRemoteService.countByUserId(id);
+//        PageImpl<Book> books1 = new PageImpl<Book>(books,new PageRequest(offset,limit),integer);
+//
+//        return books1;
+//    }
 }

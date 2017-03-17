@@ -19,4 +19,5 @@ public interface BookService {
     void update(Book book);
 
     void delete(Long id);
+//    Page<Book> getList(Long id, Integer offset, Integer limit);
 }

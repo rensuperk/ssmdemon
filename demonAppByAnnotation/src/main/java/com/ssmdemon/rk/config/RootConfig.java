@@ -8,6 +8,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 
 @EnableAspectJAutoProxy(proxyTargetClass=true)
-@ComponentScan(basePackages = "com.ssmdemon.rk")
-public class RootConfig {
+@ComponentScan(basePackages = {"com.ssmdemon.rk"})
+public class RootConfig{
 }

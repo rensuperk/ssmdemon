@@ -8,7 +8,7 @@
 
     <!--应用名称-->
     <dubbo:application name="ssmdemon" />
-    <dubbo:registry address="zookeeper://192.168.10.20:2181" check="true"/>
+    <dubbo:registry address="zookeeper://192.168.56.101:2181" check="true"/>
     <dubbo:annotation package="com.ssmdemon.rk"></dubbo:annotation>
     <dubbo:protocol name="dubbo"/>
 </beans>

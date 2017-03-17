@@ -1,5 +1,6 @@
 package com.ssmdemon.rk.service.test;
 
+import com.ssmdemon.rk.config.RootConfig;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -9,6 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath:spring/spring-dubbo.xml","classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml"})
+@ContextConfiguration(classes = RootConfig.class)
 public class BaseTest {
 }

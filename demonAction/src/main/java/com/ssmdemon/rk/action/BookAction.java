@@ -24,7 +24,7 @@ public class BookAction {
     @Autowired
     private BookService bookService;
 
-    @Reference
+    @Reference(check = true)
     private BookRemoteService bookRemoteService;
 
     @ResponseBody
@@ -63,9 +63,10 @@ public class BookAction {
     @RequestMapping("borrowedBy/{id}")
     @ResponseBody
     public RespDto listByUserId(@PathVariable("id") Long id, @RequestParam(defaultValue = "0") Integer offset,@RequestParam(defaultValue = "10") Integer limit) {
-        List<Book> list = bookRemoteService.listByUserId(id,offset,limit);
-        Integer count = bookRemoteService.countByUserId(id);
-        return new RespDto().put("rows",list).put("count",count);
+//        Page<Book> list = bookService.getList(id, offset, limit);
+
+        return new RespDto().put("rows",bookRemoteService.listByUserId(id,offset,limit)).put("count",bookRemoteService.countByUserId(id));
+//        return new RespDto().put("rows",list.getContent()).put("count",list.getTotalElements());
     }
     @RequestMapping("borrow/{id}")
     @ResponseBody

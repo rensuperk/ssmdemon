@@ -8,12 +8,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.PropertiesLoaderSupport;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Created by renkai on 2017/3/16.
@@ -60,8 +63,13 @@ public class DaoConfig {
     SqlSessionFactoryBean sqlSessionFactoryBean() throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(druidDataSource());
-        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybaties-config.xml"));
+//        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybaties-config.xml"));
+        Properties properties = new Properties();
+        properties.put("useGeneratedKeys",true);
+        properties.put("useColumnLabel",true);
+        properties.put("mapUnderscoreToCamelCase",true);
 
+        sqlSessionFactoryBean.setConfigurationProperties(properties);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
         sqlSessionFactoryBean.setTypeAliasesPackage("com.ssmdemon.rk.model");
