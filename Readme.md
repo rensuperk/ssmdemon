@@ -1,7 +1,13 @@
-## 我的奋斗,从readme开始
-
-##logs
-
+ ## 我的奋斗,从readme开始
+ ===
+##项目说明:
+###1. demonApp和demonAppByAnnotation,demonRemoteApp三个是      独立的项目,都可以单独部署,其中demonApp是基于xml配置的,demonAppByAnnotation是基于注解的,而demonRemoteApp只作为发布dubbo远程服务
+###2. 部署前请自行开启相关的服务,包括zk,kafka,redis,mysql等
+###3. 持续更新中,敬请期待
+ ##logs
+ 
+#### 注解已经充分测试
+---
 #### 新增基于注解的配置
 ___
 ___
