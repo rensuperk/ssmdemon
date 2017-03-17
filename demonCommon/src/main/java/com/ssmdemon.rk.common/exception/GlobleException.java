@@ -21,7 +21,6 @@ import java.util.Locale;
 /**
  * Created by renkai on 2017/3/7.
  */
-@Component
 public class GlobleException extends SimpleMappingExceptionResolver {
    private static Logger logger = LoggerFactory.getLogger(GlobleException.class);
     @Autowired

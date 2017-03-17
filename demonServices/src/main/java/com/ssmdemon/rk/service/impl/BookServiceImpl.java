@@ -20,7 +20,7 @@ public class BookServiceImpl implements BookService{
 
     @Autowired
     private BookDao bookDao;
-    @Autowired
+    @Autowired(required = false)
     private KafkaTemplate<Integer,String> kafkaTemplate;
 
     @Transactional
