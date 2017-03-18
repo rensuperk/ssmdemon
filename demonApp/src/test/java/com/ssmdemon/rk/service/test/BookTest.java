@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by renkai on 2017/3/9.
  */
-public class BookTest extends BaseTest{
+public class    BookTest extends BaseTest{
     @Autowired
     private BookAction bookAction;
 

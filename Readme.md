@@ -1,40 +1,46 @@
- ## 我的奋斗,从readme开始
- ===
-##项目说明:
-###1. demonApp和demonAppByAnnotation,demonRemoteApp三个是      独立的项目,都可以单独部署,其中demonApp是基于xml配置的,demonAppByAnnotation是基于注解的,而demonRemoteApp只作为发布dubbo远程服务
-###2. 部署前请自行开启相关的服务,包括zk,kafka,redis,mysql等
-###3. 持续更新中,敬请期待
- ##logs
+# logs
  
-#### 注解已经充分测试
----
-#### 新增基于注解的配置
+注解已经充分测试
 ___
-___
-###  1.  这是一个spring+springmvc+mybaties的样板代码
-###  2.  这是一个基于xml配置的项目
-###  3.  这是一个maven管理的项目
-###  4.  这是一个应用了企业业务分层的项目
-###  5.  写这个项目的时候用了测试驱动的方法,感觉确实快了很多,正确性也能够有保证
-###  6.  使用了logback做项目sl4g项目的整合
-### 7. 使用了c3p0和druid数据库连接池
-### 8. 能够切换数据库
-### 9. 使用redis缓存,已经引入了
-### 10. 使用dubbo治理远程服务SOA+zk进行任务调度# 1. 提供者单独提供一个服务# 2. 基于xml的配置方式
-### 11. 使用shiro进行安全访问(没实现)
-### 12. 前端用jsp(先用这个吧,还没开始写)
-### 13. 基于注解的事务
-### 14. 使用hibernate-validator进行参数验证
-### 15. 根据环境切换配置文件
-### 16. 新增kafka消息队列,新增书籍信息加入消息队列中
+新增基于注解的配置
 
-#### 大概就这些,详情看代码
+
+##项目说明:
+1. demonApp和demonAppByAnnotation,demonRemoteApp三个是      独立的项目,都可以单独部署,其中demonApp是基于xml配置的,demonAppByAnnotation是基于注解的,而demonRemoteApp只作为发布dubbo远程服务
+2. 部署前请自行开启相关的服务,包括zk,kafka,redis,mysql等
+3. [查看地址](https://github.com/rensuperk/ssmdemon),[下载](https://github.com/rensuperk/ssmdemon/archive/master.zip)
+
+## 功能
+1.  这是一个spring+springmvc+mybaties的样板代码
+2.  这是一个基于xml配置的项目
+3.  这是一个maven管理的项目
+4.  这是一个应用了企业业务分层的项目
+5.  写这个项目的时候用了测试驱动的方法,感觉确实快了很多,正确性也能够有保证
+6.  使用了logback做项目sl4g项目的整合
+7. 使用了c3p0和druid数据库连接池
+8. 能够切换数据库
+9. 使用redis缓存,已经引入了
+10. 使用dubbo治理远程服务SOA+zk进行任务调度
+11. 使用shiro进行安全访问(没实现,配置在另外一个分支)
+12. 前端用jsp(先用这个吧,还没开始写)
+13. 基于注解的事务
+14. 使用hibernate-validator进行参数验证
+15. 根据环境切换配置文件
+16. 新增kafka消息队列,新增书籍信息加入消息队列中
+17. 新增基于注解的配置方式
+
+
+
+
+
+#### 大概就这些功能,想到了继续添加,详情看代码
  
- 
- ## 安装ubuntu
- ## 安装mysql
- ## 安装zookeeper
- 使用wget去官网下载压缩包
+安装ubuntu 安装的是乌班图ubuntu-16.10-desktop-amd64.iso
+安装mysql 5.7 创建库分配权限
+安装zookeeper 配置和开启
+安装kafka配置和启动
+安装redis配置和启动
+大多使用wget去官网下载压缩包,地址自行搜索
  ```
  cd /app/
  tar -zxvf 下载的包
@@ -113,5 +119,4 @@ bin/zkCli.sh -server 192.168.56.101:2181
  ```
 apt-get install redis
 ```
- 
- 
+启动略
