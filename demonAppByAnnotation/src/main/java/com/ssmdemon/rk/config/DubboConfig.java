@@ -28,7 +28,7 @@ public class DubboConfig{
     }
     @Bean
     RegistryConfig registryconfig(){
-        RegistryConfig registryConfig = new RegistryConfig("zookeeper://192.168.56.101:2181");
+        RegistryConfig registryConfig = new RegistryConfig("zookeeper://192.168.56.102:2181");
         registryConfig.setCheck(true);
         return registryConfig;
     }
