@@ -63,7 +63,6 @@ public class DaoConfig {
     SqlSessionFactoryBean sqlSessionFactoryBean() throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(druidDataSource());
-//        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybaties-config.xml"));
         Properties properties = new Properties();
         properties.put("useGeneratedKeys",true);
         properties.put("useColumnLabel",true);
