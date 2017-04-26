@@ -56,7 +56,7 @@ syncLimit=5
 dataDir=/app/zookeeper/data
 dataLogDir=/app/zookeeper/logs
 clientPort=2181
-server.1=192.168.56.101:2888:3888 #本地域名:与leader交换信息的端口:重新选举的端口
+server.1=192.168.42.129:2888:3888 #本地域名:与leader交换信息的端口:重新选举的端口
 
 
 #配置环境变量
@@ -68,7 +68,7 @@ export PATH=$PATH:$ZOOKEEPER_INSTALL/bin
 #启动
 bin/zkServer.sh start
 #查看服务
-bin/zkCli.sh -server 192.168.56.101:2181
+bin/zkCli.sh -server 192.168.42.129:2181
  ```
  
  

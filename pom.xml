@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <!--<module>demonApp</module>-->
+        <module>demonApp</module>
         <module>demonAction</module>
         <module>demonInterface</module>
         <module>demonServices</module>
@@ -18,7 +18,7 @@
         <module>demonCommon</module>
         <module>demonInterfaceRemote</module>
         <module>demonServicesRemote</module>
-        <!--<module>demonRemoteApp</module>-->
+        <module>demonRemoteApp</module>
         <module>demonMapper</module>
         <module>demonAppByAnnotation</module>
     </modules>
