@@ -4,15 +4,19 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 /**
  * Created by renkai on 2017/3/16.
  */
 @Configuration
-public class DubboConfig{
+public class DubboConfig implements EnvironmentAware{
 
+    protected  String zkAddress;
     @Bean
     public AnnotationBean annotationBean() {
         AnnotationBean annotationBean = new AnnotationBean();
@@ -28,7 +32,7 @@ public class DubboConfig{
     }
     @Bean
     RegistryConfig registryconfig(){
-        RegistryConfig registryConfig = new RegistryConfig("zookeeper://192.168.56.102:2181");
+        RegistryConfig registryConfig = new RegistryConfig(zkAddress);
         registryConfig.setCheck(true);
         return registryConfig;
     }
@@ -39,5 +43,8 @@ public class DubboConfig{
         return  protocolConfig;
     }
 
+    public void setEnvironment(Environment environment) {
+         zkAddress = environment.getProperty("zk_address");
+    }
 }
 

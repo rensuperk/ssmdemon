@@ -24,7 +24,6 @@ import java.util.Properties;
 @Configuration
 @MapperScan(value = "com.ssmdemon.rk.dao",sqlSessionFactoryRef = "sqlSessionFactory")
 @EnableTransactionManagement
-@PropertySource("classpath:jdbc.properties")
 public class DaoConfig {
 
     @Autowired
