@@ -4,9 +4,9 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
  * Created by renkai on 2017/3/16.
  */
 @Configuration
+@Conditional(DubboCondition.class)
 public class DubboConfig implements EnvironmentAware{
 
     protected  String zkAddress;
